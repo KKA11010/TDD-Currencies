@@ -37,10 +37,16 @@ public class Money {
     }
 
     public Money plus(Money other) {
+        if (!currency.equals(other.currency)) {
+            throw new IllegalArgumentException("Currencies don't match");
+        }
         return new Money(amount + other.amount, currency);
     }
 
     public Money minus(Money other) {
+        if (!currency.equals(other.currency)) {
+            throw new IllegalArgumentException("Currencies don't match");
+        }
         return new Money(amount - other.amount, currency);
     }
 
