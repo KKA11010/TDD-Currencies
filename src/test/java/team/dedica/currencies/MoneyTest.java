@@ -34,6 +34,24 @@ class MoneyTest {
     }
 
     @Test
+    void TestSum() {
+        Money a = Money.parse("USD 1,000.00");
+        Money b = Money.parse("VEF 1,000,000.00");
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> a.plus(b))
+                .withMessage("Currencies don't match");
+    }
+
+    @Test
+    void TestSubtract() {
+        Money a = Money.parse("USD 1,000,000.00");
+        Money b = Money.parse("VEF 1,000.00");
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> a.minus(b))
+                .withMessage("Currencies don't match");
+    }
+
+    @Test
     void testInterestRates() {
         Money accountBalance = Money.parse("USD 1,000.00");
         accountBalance = accountBalance.times(1.2);
