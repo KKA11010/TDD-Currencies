@@ -34,7 +34,7 @@ class MoneyTest {
     }
 
     @Test
-    void TestSum() {
+    void testSum() {
         Money a = Money.parse("USD 1,000.00");
         Money b = Money.parse("VEF 1,000,000.00");
         assertThatExceptionOfType(IllegalArgumentException.class)
@@ -43,7 +43,7 @@ class MoneyTest {
     }
 
     @Test
-    void TestSubtract() {
+    void testSubtract() {
         Money a = Money.parse("USD 1,000,000.00");
         Money b = Money.parse("VEF 1,000.00");
         assertThatExceptionOfType(IllegalArgumentException.class)
